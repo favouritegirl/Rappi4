@@ -1,8 +1,11 @@
+import { Button } from '@mui/material'
 import React from 'react'
 
 const SingUp = () => {
   return (
-    <div>singup</div>
+    <div>
+      <Button>Clique</Button>
+    </div>
   )
 }
 
