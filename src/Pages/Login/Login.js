@@ -26,7 +26,6 @@ const Login = () => {
     await axios
       .post(`${BASE_URL}/login`, body)
       .then((res) => {
-        console.log(res.data.token);
         localStorage.setItem("token", res.data.token)
         goToFeed(navigate)
       })

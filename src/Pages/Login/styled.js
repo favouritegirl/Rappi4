@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Button } from "@mui/material";
 
 export const Main = styled.div`
-  padding: 10px;
+  /* padding: 10px; */
   width: 100%;
   height: 100vh;
   display: flex;
