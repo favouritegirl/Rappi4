@@ -8,10 +8,10 @@ import { goToSingUpAdress } from "../../Routes/coordinator";
 import { ButtonStyled, Form, Main, Title } from "./styled";
 
 const SingUp = () => {
+  const navigate = useNavigate();
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checkErrPass, SetCheckErrPass] = useState(false);
-
-  const navigate = useNavigate();
 
   const { form, onChange, clean } = useForm({
     name: "",

@@ -3,14 +3,14 @@ import { ButtonStyled, Form, Main, Title } from "./styled";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { goToFeed } from "../../Routes/coordinator";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmitLogin = (event) => {
     event.preventDefault();
@@ -26,8 +26,8 @@ const Login = () => {
     await axios
       .post(`${BASE_URL}/login`, body)
       .then((res) => {
-        localStorage.setItem("token", res.data.token)
-        goToFeed(navigate)
+        localStorage.setItem("token", res.data.token);
+        goToFeed(navigate);
       })
       .catch((err) => {
         alert(err.response.data.message);
