@@ -16,7 +16,7 @@ export const useRequestData = (initialState, url) => {
         setData(res.data);
       })
       .catch((err) => {
-        console.log(err.response);
+        alert(err.response);
       });
   };
 
