@@ -4,6 +4,8 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1rem;
+
 `;
 
 export const Restaurants = styled.div``;

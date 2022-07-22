@@ -1,3 +1,7 @@
+export const goToBack = (navigate) => {
+  navigate(-1)
+}
+
 export const goToLogin = (navigate) => {
   navigate('/')
 }

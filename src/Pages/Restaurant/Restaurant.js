@@ -6,6 +6,8 @@ import CardRestaurant from "../../Components/CardRestaurantsDetails/CardRestaura
 import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { Category, Main, ProductByCategory } from "./styled";
+import Header from "../../Components/Header/Header";
+
 
 const Restaurant = () => {
   const { restaurant } = useParams();
@@ -40,6 +42,7 @@ const Restaurant = () => {
 
   return (
     <Main>
+      <Header title={"Restaurante"} back={true}/>
       {/* Faz um map nas categorias da loja, depois um filtro para verificar se o produto tem a mesma categoria em questão, depois outro map para exibir esses produtos  */}
       <CardRestaurant restaurant={restaurantInfo} />
       {restaurantInfo.products &&

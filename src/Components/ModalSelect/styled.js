@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const BoxModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem 0 1rem;
+  margin: 60% 1rem 50% 1rem;
+`;
+
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,27 +17,6 @@ export const MainContainer = styled.div`
   color: black;
   margin: auto;
   padding: 10px 0;
-
-  /* form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        input{
-            width: 80%;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-        }
-    } */
-`;
-
-export const BoxModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 1rem 0 1rem;
-  margin: 60% 1rem 50% 1rem;
 `;
 
 export const SelectQuantity = styled.select`

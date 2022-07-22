@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  justify-items: center;
+  /* justify-content: center; */
   align-items: center;
-  width: 175px;
+  /* width: 175px; */
   height: 44px;
-  margin: 15px 92px 5px 93px;
+  margin-bottom: 8px;
   /* padding: 13px 63.5px 12px; */
-  /* border-bottom: solid 1px rgba(0, 0, 0, 0.25); */
+  width: 100%;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.25);
 `;
 
 export const Title = styled.h1`
@@ -18,4 +21,5 @@ export const Title = styled.h1`
   font-size: 16px;
   font-weight: bold;
   color: #000;
+  grid-column-start: 2;
 `;

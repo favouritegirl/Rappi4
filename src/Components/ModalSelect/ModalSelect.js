@@ -1,7 +1,6 @@
 import * as React from "react";
 import Modal from "@mui/material/Modal";
 import {
-  Background,
   BoxModal,
   Button,
   MainContainer,
