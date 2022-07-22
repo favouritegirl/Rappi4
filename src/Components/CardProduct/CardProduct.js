@@ -1,4 +1,5 @@
 import React from "react";
+import ModalSelect from "../ModalSelect/ModalSelect";
 import {
   BoxInf,
   BoxNameQuantity,
@@ -9,9 +10,12 @@ import {
   InfButton,
   Price,
   DescriptionProduct,
+  BoxInfPriceButton,
 } from "./styled";
 
 const CardProduct = ({ product }) => {
+  const [showModal, setShowModal] = React.useState(false);
+
   return (
     <Main>
       <ImgProduct src={product.photoUrl} />
@@ -22,8 +26,11 @@ const CardProduct = ({ product }) => {
         <DescriptionProduct>{product.description}</DescriptionProduct>
         <QuantityProduct>
           <Price>R$ {product.price} </Price>
-          <InfButton>Adicionar</InfButton>
+          <InfButton onClick={() => setShowModal(true)}>Adicionar</InfButton>
         </QuantityProduct>
+        <ModalSelect open={showModal} setOpen={setShowModal}>
+
+        </ModalSelect>
       </BoxInf>
     </Main>
   );
