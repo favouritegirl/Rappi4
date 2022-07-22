@@ -1,6 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { goToRestaurant } from "../../Routes/coordinator";
 import {
   BoxInf,
   ImgRestaurant,
@@ -10,16 +8,16 @@ import {
 } from "./styled";
 
 const CardRestaurant = ({ restaurant }) => {
-  const navigate = useNavigate()
-
   return (
-    <Main onClick={() => goToRestaurant(navigate, restaurant.id)}>
+    <Main>
       <ImgRestaurant src={restaurant.logoUrl} />
       <NameRstaurant>{restaurant.name}</NameRstaurant>
+      <InfRestaurant>{restaurant.category}</InfRestaurant>
       <BoxInf>
         <InfRestaurant>{restaurant.deliveryTime} min</InfRestaurant>
         <InfRestaurant>Frete R${restaurant.shipping},00</InfRestaurant>
       </BoxInf>
+      <InfRestaurant>{restaurant.address}</InfRestaurant>
     </Main>
   );
 };

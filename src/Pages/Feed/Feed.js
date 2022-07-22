@@ -33,7 +33,7 @@ const Feed = () => {
     restaurants.map((rest) => {
       return array.push(rest.category);
     });
-    //tira repetição do array
+    //tirar informações duplicadas do array
     setCategories([...new Set(array)]);
   };
 
