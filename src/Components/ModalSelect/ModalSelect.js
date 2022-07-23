@@ -7,7 +7,9 @@ import {
   SelectQuantity,
 } from "./styled";
 
-const ModalSelect = ({ open, setOpen }) => {
+const ModalSelect = ({ open, setOpen, choiceQuantity }) => {
+  const [quantity, setQuantity] = React.useState("")
+
   return (
     <>
       <Modal
@@ -21,7 +23,7 @@ const ModalSelect = ({ open, setOpen }) => {
         <BoxModal>
           <MainContainer>
             <p>Selecione a quantia desejada</p>
-            <SelectQuantity>
+            <SelectQuantity onChange={(e) => setQuantity(e.target.value)}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -31,7 +33,7 @@ const ModalSelect = ({ open, setOpen }) => {
               <option>7</option>
               <option>8</option>
             </SelectQuantity>
-            <Button>ADICIONAR AO CARRINHO</Button>
+            <Button onClick={() => choiceQuantity(Number(quantity))}>ADICIONAR AO CARRINHO</Button>
           </MainContainer>
         </BoxModal>
       </Modal>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import ModalSelect from "../ModalSelect/ModalSelect";
 import {
   BoxInf,
@@ -15,6 +16,12 @@ import {
 
 const CardProduct = ({ product }) => {
   const [showModal, setShowModal] = React.useState(false);
+  const {requests} = useGlobal()
+  const {addToCart} = requests
+
+  const choiceQuantity = (quantity) => {
+    addToCart(product, quantity)
+  }
 
   return (
     <Main>
@@ -25,17 +32,20 @@ const CardProduct = ({ product }) => {
         </BoxNameQuantity>
         <DescriptionProduct>{product.description}</DescriptionProduct>
         <QuantityProduct>
-          
-          <Price>{new Intl.NumberFormat("pt-br", {
-            style: "currency",
-            currency: "BRL"
-          }).format( product.price)} </Price>
+          <Price>
+            {new Intl.NumberFormat("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            }).format(product.price)}{" "}
+          </Price>
 
           <InfButton onClick={() => setShowModal(true)}>Adicionar</InfButton>
         </QuantityProduct>
-        <ModalSelect open={showModal} setOpen={setShowModal}>
-
-        </ModalSelect>
+        <ModalSelect
+          choiceQuantity={choiceQuantity}
+          open={showModal}
+          setOpen={setShowModal}
+        ></ModalSelect>
       </BoxInf>
     </Main>
   );

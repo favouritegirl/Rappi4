@@ -7,6 +7,7 @@ import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { Category, Main, ProductByCategory } from "./styled";
 import Header from "../../Components/Header/Header";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 
 
 const Restaurant = () => {
@@ -56,7 +57,12 @@ const Restaurant = () => {
                   return p.category === c;
                 })
                 .map((p) => {
-                  return <CardProduct key={p.id} product={p} />;
+                  return (
+                    <CardProduct 
+                    key={p.id} 
+                    product={p} 
+                    />
+                  );
                 })}
             </ProductByCategory>
           );
