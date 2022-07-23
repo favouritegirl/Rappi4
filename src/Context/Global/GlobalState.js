@@ -3,9 +3,15 @@ import GlobalStateContext from './GlobalStateContext'
 
 const GlobalState = ({children}) => {
   const [cart, setCart] = useState([])
+  const [restaurant, setRestaurant] = useState({})
 
-  const addToCart = (product, quantity) => {
-    setCart([...cart, {...product, quantity}])
+  const addToCart = (product, quantity, newRestaurant) => {
+    if(newRestaurant.id === restaurant.id){
+      setCart([...cart, {...product, quantity}])
+    }else{
+      setCart([{...product, quantity}])
+      setRestaurant(newRestaurant)
+    }
   }
 
   const removeToCart = (id) => {

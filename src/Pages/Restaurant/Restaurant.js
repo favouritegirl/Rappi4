@@ -60,7 +60,8 @@ const Restaurant = () => {
                   return (
                     <CardProduct 
                     key={p.id} 
-                    product={p} 
+                    product={p}
+                    restaurant={restaurantInfo} 
                     />
                   );
                 })}

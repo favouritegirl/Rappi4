@@ -48,7 +48,10 @@ export const QuantityProduct = styled.div`
   color: red;
 `;
 
-// export const DescriptionProduct = styled.div``;
+export const DescriptionProduct = styled.div`
+color: #b8b8b8;
+font-size: 14px;
+`;
 
 export const Price = styled.p`
   display: flex;
@@ -73,12 +76,6 @@ export const BoxInfPriceButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: solid 1px red; */
   width: 100%;
   height: 1.90rem;
 `;
-
-
-/* display: flex; */
-//   justify-content: space-between;
-//   align-items: center;
