@@ -7,8 +7,16 @@ const GlobalState = ({children}) => {
   const addToCart = (product, quantity) => {
     setCart([...cart, {...product, quantity}])
   }
+
+  const removeToCart = (id) => {
+    const index = cart.findIndex((product) => product.id === id)
+    const newCart = [...cart]
+    newCart.splice(index, 1)
+    setCart(newCart)
+  }
+
   const states = { cart }
-  const requests = { addToCart }
+  const requests = { addToCart, removeToCart }
   const setters = {}
 
 

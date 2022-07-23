@@ -8,39 +8,52 @@ import {
   Main,
   NameProduct,
   QuantityProduct,
-  InfButton,
   Price,
   DescriptionProduct,
   BoxInfPriceButton,
+  InfButtonRemoveItem,
+  InfButtonAddItem,
 } from "./styled";
 
 const CardProduct = ({ product }) => {
   const [showModal, setShowModal] = React.useState(false);
-  const {requests} = useGlobal()
-  const {addToCart} = requests
+  const {requests, states} = useGlobal()
+  const {addToCart, removeToCart} = requests
+  const {cart} = states
 
   const choiceQuantity = (quantity) => {
     addToCart(product, quantity)
+    setShowModal(false)
   }
 
+  const productInCart = cart.find((pCart) => pCart.id === product.id)
+ 
   return (
     <Main>
       <ImgProduct src={product.photoUrl} />
       <BoxInf>
         <BoxNameQuantity>
           <NameProduct>{product.name}</NameProduct>
+          {productInCart && <QuantityProduct>{productInCart.quantity}</QuantityProduct>}
         </BoxNameQuantity>
-        <DescriptionProduct>{product.description}</DescriptionProduct>
-        <QuantityProduct>
+        <p>{product.description}</p>
+        <BoxInfPriceButton>
           <Price>
             {new Intl.NumberFormat("pt-br", {
               style: "currency",
               currency: "BRL",
             }).format(product.price)}{" "}
           </Price>
-
-          <InfButton onClick={() => setShowModal(true)}>Adicionar</InfButton>
-        </QuantityProduct>
+          {productInCart ? (
+            <InfButtonRemoveItem onClick={() => removeToCart(product.id)}>
+              Remove
+            </InfButtonRemoveItem>
+          ) : (
+            <InfButtonAddItem onClick={() => setShowModal(true)}>
+              Adicionar
+            </InfButtonAddItem>
+          )}
+        </BoxInfPriceButton>
         <ModalSelect
           choiceQuantity={choiceQuantity}
           open={showModal}

@@ -35,19 +35,26 @@ export const NameProduct = styled.h3`
   margin: 0.5rem 0 0 0;
 `;
 
+
 export const QuantityProduct = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  border: solid 1px red;
+  width: 2rem;
+  height: 1.95rem;
+  border-radius: 0 8px 0 8px;
+  border: 1.5px red solid;
+  color: red;
 `;
 
-export const DescriptionProduct = styled.div``;
+// export const DescriptionProduct = styled.div``;
 
 export const Price = styled.p`
   display: flex;
 `;
 
-export const InfButton = styled.button`
+export const InfButtonAddItem = styled.button`
   width: 5rem;
   height: 2rem;
   border-radius: 8px 0 8px 0;
@@ -56,11 +63,22 @@ export const InfButton = styled.button`
   border: 1px black solid;
 `;
 
+export const InfButtonRemoveItem = styled(InfButtonAddItem)`
+  border: 2px red solid;
+  color: red
+
+`
+
 export const BoxInfPriceButton = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: solid 1px red;
-  width: 2rem;
-  height: 2rem;
+  /* border: solid 1px red; */
+  width: 100%;
+  height: 1.90rem;
 `;
+
+
+/* display: flex; */
+//   justify-content: space-between;
+//   align-items: center;
