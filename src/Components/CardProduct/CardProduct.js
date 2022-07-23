@@ -25,7 +25,12 @@ const CardProduct = ({ product }) => {
         </BoxNameQuantity>
         <DescriptionProduct>{product.description}</DescriptionProduct>
         <QuantityProduct>
-          <Price>R$ {product.price} </Price>
+          
+          <Price>{new Intl.NumberFormat("pt-br", {
+            style: "currency",
+            currency: "BRL"
+          }).format( product.price)} </Price>
+
           <InfButton onClick={() => setShowModal(true)}>Adicionar</InfButton>
         </QuantityProduct>
         <ModalSelect open={showModal} setOpen={setShowModal}>
