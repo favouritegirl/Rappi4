@@ -4,8 +4,10 @@ import { useState } from "react";
 import CardRestaurant from "../../Components/CardRestaurants/CardRestaurant";
 import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import Header from "../../Components/Header/Header";
+import { Order } from "../../Components/Order/Order";
 import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { InputSearch, Main, Menu, MenuItem, Restaurants } from "./styled";
 
@@ -17,6 +19,29 @@ const Feed = () => {
   const [valueCategory, setValueCategory] = useState("");
   const [inputText, setInputText] = useState("");
 
+  const {states, requests, setters} = useGlobal()
+  const {setOrder} = setters
+  const {order} = states
+
+  
+  
+  const getOrder = async () =>{
+    await axios
+    .get(`${BASE_URL}/active-order`, TOKEN)
+    .then((res) => {
+      setOrder(res.data.order);
+      //mostrar ou não modal de pedido em andamento
+      const expires = res.data.order.expiresAt
+      setTimeout(() => {
+        getOrder()
+      }, expires - new Date().getTime())
+    })
+    .catch((err) => {
+      alert(err.response.data.message);
+    });
+  };
+  
+  console.log(order)
   const getRestaurants = async () => {
     await axios
       .get(`${BASE_URL}/restaurants`, TOKEN)
@@ -53,7 +78,8 @@ const Feed = () => {
 
   useEffect(() => {
     getRestaurants();
-  });
+    getOrder()
+  }, []);
 
   return (
     <Main>
@@ -71,6 +97,7 @@ const Feed = () => {
         ))}
       </Menu>
       <Restaurants>{filterRestaurant}</Restaurants>
+      {order && <Order restaurant={order.restaurantName} totalPrice={order.totalPrice}/>}
       <Footer />
     </Main>
   );
