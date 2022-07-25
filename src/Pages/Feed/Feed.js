@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import CardRestaurant from "../../Components/CardRestaurants/CardRestaurant";
+import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import Header from "../../Components/Header/Header";
 import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
@@ -70,6 +71,7 @@ const Feed = () => {
         ))}
       </Menu>
       <Restaurants>{filterRestaurant}</Restaurants>
+      <Footer />
     </Main>
   );
 };

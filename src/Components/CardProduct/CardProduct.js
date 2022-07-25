@@ -26,7 +26,8 @@ const CardProduct = ({ product, restaurant }) => {
     setShowModal(false);
   };
 
-  const productInCart = cart.find((pCart) => pCart.id === product.id);
+
+  const productInCart =  cart.find((pCart) => pCart.id === product.id);
 
   return (
     <Main>

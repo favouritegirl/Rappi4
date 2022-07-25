@@ -4,6 +4,7 @@ import GlobalStateContext from './GlobalStateContext'
 const GlobalState = ({children}) => {
   const [cart, setCart] = useState([])
   const [restaurant, setRestaurant] = useState({})
+  const [order, setOrder] = useState(null)
 
   const addToCart = (product, quantity, newRestaurant) => {
     if(newRestaurant.id === restaurant.id){
@@ -21,12 +22,10 @@ const GlobalState = ({children}) => {
     setCart(newCart)
   }
 
-  const states = { cart }
+  const states = { cart, restaurant, order }
   const requests = { addToCart, removeToCart }
-  const setters = {}
+  const setters = {setOrder}
 
-
-  console.log(cart)
   return (
     <GlobalStateContext.Provider value={{states, requests, setters}}>
       {children}

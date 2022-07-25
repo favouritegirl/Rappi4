@@ -9,7 +9,6 @@ import { Category, Main, ProductByCategory } from "./styled";
 import Header from "../../Components/Header/Header";
 import { useGlobal } from "../../Context/Global/GlobalStateContext";
 
-
 const Restaurant = () => {
   const { restaurant } = useParams();
   const [restaurantInfo, setRestaurantInfo] = useState({});
@@ -44,6 +43,8 @@ const Restaurant = () => {
   return (
     <Main>
       <Header title={"Restaurante"} back={true}/>
+    
+
       {/* Faz um map nas categorias da loja, depois um filtro para verificar se o produto tem a mesma categoria em questão, depois outro map para exibir esses produtos  */}
       <CardRestaurant restaurant={restaurantInfo} />
       {restaurantInfo.products &&

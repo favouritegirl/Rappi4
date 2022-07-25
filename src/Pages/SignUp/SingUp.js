@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { goToSingUpAdress } from "../../Routes/coordinator";
@@ -55,6 +56,7 @@ const SingUp = () => {
 
   return (
     <Main>
+      <Header back={true}/>
       <Title>Cadastrar</Title>
       <Form onSubmit={onSubmitForm}>
         <TextField
