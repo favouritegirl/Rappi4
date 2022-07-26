@@ -7,7 +7,10 @@ import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { goToFeed } from "../../Routes/coordinator";
-import { ButtonStyled, Form, Main, Title } from "./styled";
+import { ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
+import logo from '../../Assets/img/logo.png'
+import Header from "../../Components/Header/Header";
+
 
 const SingUpAdress = () => {
   useProtectedPage();
@@ -43,7 +46,9 @@ const SingUpAdress = () => {
 
   return (
     <Main>
-      <Title>Endereço</Title>
+      <Header back={true} />
+      <Title>Meu Endereço</Title>
+
       <Form onSubmit={onSubmitAdress}>
         <TextField
           id="outlined-basic"

@@ -9,6 +9,12 @@ export const Main = styled.div`
   align-items: center;
 `
 
+export const ImgLogo = styled.img`
+  width: 6.5rem;
+  height: 3.625rem;
+  margin: 5.5rem 0 1.75rem 0;
+`;
+
 export const Title = styled.p`
 font-size: 1rem;
 `
@@ -32,5 +38,7 @@ export const ButtonStyled = styled(Button)`
 export const ButtonRegistration = styled.button`
   border: none;
   background-color: white;
+  font-weight: bold;
   cursor: pointer;
+  text-decoration: underline;
 `

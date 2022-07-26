@@ -9,6 +9,12 @@ export const Main = styled.div`
   align-items: center;
 `;
 
+export const ImgLogo = styled.img`
+  width: 6.5rem;
+  height: 3.625rem;
+  margin: 1.5rem 0 1.25rem 0;
+`;
+
 export const Title = styled.p`
   font-size: 1rem;
 `;
