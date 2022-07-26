@@ -18,7 +18,7 @@ const AddressEdit = () => {
   const data = useRequestData({}, `${BASE_URL}/profile/address`);
   const address = data[0].address;
 
-  const { form, onChange, clean } = useForm({
+  const { form, onChange} = useForm({
     street: "",
     number: "",
     neighbourhood: "",
@@ -42,7 +42,6 @@ const AddressEdit = () => {
       })
       .catch((err) => {
         alert(err.response);
-        console.log(err.response);
       });
   };
 

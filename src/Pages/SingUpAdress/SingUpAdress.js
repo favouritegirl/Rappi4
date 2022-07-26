@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
+import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { goToFeed } from "../../Routes/coordinator";
 import { ButtonStyled, Form, Main, Title } from "./styled";
 
 const SingUpAdress = () => {
+  useProtectedPage();
   const navigate = useNavigate();
 
   const { form, onChange, clean } = useForm({

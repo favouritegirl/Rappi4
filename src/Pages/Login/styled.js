@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { Button } from "@mui/material";
 
 export const Main = styled.div`
-  /* padding: 10px; */
   width: 100%;
   height: 100vh;
   display: flex;
@@ -28,4 +27,10 @@ export const ButtonStyled = styled(Button)`
     color: #000000;
     width: 100%;
   }
+`
+
+export const ButtonRegistration = styled.button`
+  border: none;
+  background-color: white;
+  cursor: pointer;
 `

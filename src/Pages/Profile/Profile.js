@@ -2,18 +2,13 @@ import React from "react";
 import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import Header from "../../Components/Header/Header";
 import {
-  CardDiv,
-  DataCard,
   Endereco,
-  H1,
   Historico,
   MainContainer,
   ParagradoHistorico,
   Paragrafo,
   ParagrafoEndereco,
   PCart,
-  SubTotal,
-  TituloCard,
   Usuario,
 } from "./styled";
 import edit from '../../Assets/img/edit.png'
@@ -36,7 +31,7 @@ const Profile = () => {
 
   return (
     <MainContainer>
-      <Header title={"Meu Perfil"} />
+      <Header title={"Meu Perfil"} exit={true} />
       <Usuario>
         <div>
           <Paragrafo>{person && person.name}</Paragrafo>
@@ -68,7 +63,7 @@ const Profile = () => {
       <Historico>
         <ParagradoHistorico>Historico de pedidos</ParagradoHistorico>
         {history && history.length > 0 ? history.map((request) => {
-          return <CardOrderHistory key={request.index} request={request} />;
+          return <CardOrderHistory key={request.createdAt} request={request} />;
         }) : <PCart>Você não realizou nenhum pedido</PCart>}
       </Historico>
       <Footer />

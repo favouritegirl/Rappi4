@@ -1,50 +1,24 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-display: flex;
-flex-direction: column;
-
-`
-
+  display: flex;
+  flex-direction: column;
+`;
 
 export const BoxAdress = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-height: 76px;
-font-size: 1.2rem;
-background-color: #eeeeee;
-
-p{
-  /* margin: 0 16px; */
-}
-`
-
-
-
-
-
-
-export const CartContainer = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 100vw;
-  min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  .restinf{
-    width: 90%;
-    margin: 10px 0;
-  }
-  .nome{
-    color: #E86E5A;
-    margin: 5px 0;
-  }
-  .inf{
-    color: #C7C7CC;
-    margin: 5px 0;
-  }
+  justify-content: center;
+  height: 4.75rem;
+  font-size: 1.2rem;
+  background-color: #eeeeee;
 `;
+export const ContainerCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+`;
+
 export const ContainerAddress = styled.div`
   display: flex;
   align-items: left;
@@ -55,36 +29,36 @@ export const ContainerAddress = styled.div`
   height: 10vh;
 `;
 export const PAddress = styled.p`
-  margin: 2px;
+  margin: 0.125rem;
   color: lightgrey;
   font-size: 16px;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.063rem;
   padding-left: 1em;
-  gap: 5px;
+  gap: 0.313rem;
 `;
-export const ProfileAdress=styled.p`
-margin:2px;
-font-weight: bold;
-padding-left: 1em;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+export const ProfileAdress = styled.p`
+  margin: 0.125rem;
+  font-weight: bold;
+  padding-left: 1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen;
 `;
 
 export const Address = styled.p`
   color: black;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  margin-left: 10px;
+  font-family: "Roboto", sans-serif;
+  margin-left: 0.625rem;
 `;
 
 export const ContainerTotal = styled.div`
   display: flex;
-  
+
   align-items: flex-start;
   justify-content: space-between;
-   margin-top: 15px;
+  margin-top: 0.938rem;
   width: 90%;
 `;
 export const ContainerH5 = styled.div`
@@ -94,6 +68,7 @@ export const ContainerH5 = styled.div`
 `;
 
 export const H5Styled = styled.h5`
+  font-size: 1rem;
   color: grey;
 `;
 
@@ -102,22 +77,22 @@ export const ContainerPrice = styled.div`
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
-  margin-right: 20px;
-  p{
+  margin-right: 1.25rem;
+  p {
     margin: 0;
     align-self: flex-start;
   }
-  .valor{
-    margin: 0;
-    align-self: flex-start;
-    color: #E86E5A
-;
-  }
+`;
+
+export const TotalPrice = styled.p`
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #e86e5a;
 `;
 export const FormOfPayment = styled.p`
   width: 96%;
   border-bottom: 2px solid grey;
-  font-weight: 550;
+  font-weight: bold;
 `;
 export const FormPayment = styled.form`
   display: flex;
@@ -125,14 +100,14 @@ export const FormPayment = styled.form`
   justify-content: center;
   flex-direction: column;
   width: 96%;
-  gap: 5px;
+  gap: 0.313rem;
 `;
 export const InputStyled = styled.input`
-  margin-right: 5px;
+  margin-right: 0.313rem;
 `;
 export const LabelStyled = styled.label`
   font-weight: bold;
-  gap: 10px;
+  gap: 0.625rem;
 `;
 export const Button = styled.button`
   outline: none;
@@ -143,12 +118,8 @@ export const Button = styled.button`
   background-color: #e86e5a;
   border: none;
   font-weight: bold;
-  font-size: 14px;
-  margin-top: 30px;
-  margin-bottom: 60px;
-  padding: 5px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
- 
-  
+  font-size: 0.875rem;
+  margin-top: 1.875rem;
+  margin-bottom: 3.75rem;
+  padding: 0.313rem;
 `;

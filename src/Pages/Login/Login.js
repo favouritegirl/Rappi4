@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { ButtonStyled, Form, Main, Title } from "./styled";
+import { ButtonRegistration, ButtonStyled, Form, Main, Title } from "./styled";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { useNavigate } from "react-router-dom";
-import { goToFeed } from "../../Routes/coordinator";
+import { goToFeed, goTosingUp } from "../../Routes/coordinator";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -61,6 +61,12 @@ const Login = () => {
         />
         <ButtonStyled type="submit"> Entrar</ButtonStyled>
       </Form>
+      <p>
+        Não possui cadastro?
+        <ButtonRegistration onClick={() => goTosingUp(navigate)}>
+          Clique aqui
+        </ButtonRegistration>{" "}
+      </p>
     </Main>
   );
 };

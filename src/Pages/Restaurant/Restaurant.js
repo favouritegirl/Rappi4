@@ -7,7 +7,6 @@ import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { Category, Main, ProductByCategory } from "./styled";
 import Header from "../../Components/Header/Header";
-import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 
 const Restaurant = () => {

@@ -19,29 +19,28 @@ const Feed = () => {
   const [valueCategory, setValueCategory] = useState("");
   const [inputText, setInputText] = useState("");
 
-  const {states, requests, setters} = useGlobal()
-  const {setOrder} = setters
-  const {order} = states
+  const { states, setters } = useGlobal();
+  const { setOrder } = setters;
+  const { order } = states;
 
-  
-  
-  const getOrder = async () =>{
+  const getOrder = async () => {
     await axios
-    .get(`${BASE_URL}/active-order`, TOKEN)
-    .then((res) => {
-      setOrder(res.data.order);
-      //mostrar ou não modal de pedido em andamento
-      const expires = res.data.order.expiresAt
-      setTimeout(() => {
-        getOrder()
-      }, expires - new Date().getTime())
-    })
-    .catch((err) => {
-      alert(err.response.data.message);
-    });
+      .get(`${BASE_URL}/active-order`, TOKEN)
+      .then((res) => {
+        if (!res.data) {
+          setOrder(res.data.order);
+          //mostrar ou não modal de pedido em andamento
+          const expires = res.data.order.expiresAt;
+          setTimeout(() => {
+            getOrder();
+          }, expires - new Date().getTime());
+        }
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
   };
-  
-  console.log(order)
+
   const getRestaurants = async () => {
     await axios
       .get(`${BASE_URL}/restaurants`, TOKEN)
@@ -78,7 +77,7 @@ const Feed = () => {
 
   useEffect(() => {
     getRestaurants();
-    getOrder()
+    getOrder();
   }, []);
 
   return (
@@ -86,18 +85,24 @@ const Feed = () => {
       <Header title={"Rappi4"} />
       <InputSearch
         value={inputText}
+        placeholder="Restaurante"
         onChange={(event) => setInputText(event.target.value)}
       />
       <Menu>
         <MenuItem onClick={() => setValueCategory("")}>Todos</MenuItem>
         {categories.map((c) => (
-          <MenuItem key={c} select={false} onClick={() => setValueCategory(c)}>
+          <MenuItem key={c} onClick={() => setValueCategory(c)}>
             {c}
           </MenuItem>
         ))}
       </Menu>
       <Restaurants>{filterRestaurant}</Restaurants>
-      {order && <Order restaurant={order.restaurantName} totalPrice={order.totalPrice}/>}
+      {order && (
+        <Order
+          restaurant={order.restaurantName}
+          totalPrice={order.totalPrice}
+        />
+      )}
       <Footer />
     </Main>
   );

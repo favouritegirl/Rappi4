@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const Main = styled.div`
   padding: 0 1rem;
   margin-top: 0.5rem;
-  /* display: flex; */
 
 `;
 
 export const ProductByCategory = styled.div`
   padding-bottom: 0.5rem;
-  font-size: 16px;
+  font-size: 1rem;
 `;
 
 export const Category = styled.p`
