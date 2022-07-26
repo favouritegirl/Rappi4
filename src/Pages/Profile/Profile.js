@@ -19,16 +19,19 @@ import edit from '../../Assets/img/edit.png'
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/url";
+import { useNavigate } from "react-router-dom";
+import { goToProfileEdit } from "../../Routes/coordinator";
 
 
 const Profile = () => {
   useProtectedPage();
+  const navigate = useNavigate()
 
   const data = useRequestData({}, `${BASE_URL}/profile`)
   const person = data[0].user
   const orderHistory = useRequestData({}, `${BASE_URL}/orders/history`)
 
-console.log(orderHistory)
+console.log(person)
   return (
     <MainContainer>
       <Header title={"Meu Perfil"} />
@@ -39,7 +42,7 @@ console.log(orderHistory)
           <Paragrafo>{person && person.cpf}</Paragrafo>
         </div>
         <div>
-          <img src={edit} alt="editar dados pessoais" />
+          <img onClick={() => goToProfileEdit(navigate, person.id)} src={edit} alt="editar dados pessoais" />
         </div>
       </Usuario>
 
@@ -49,7 +52,7 @@ console.log(orderHistory)
           <Paragrafo>{person && person.address}</Paragrafo>
         </div>
         <div>
-          <img src={edit} alt="editar endereço" />
+          <img  src={edit} alt="editar endereço" />
         </div>
       </Endereco>
 

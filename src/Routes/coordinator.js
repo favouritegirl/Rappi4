@@ -26,6 +26,10 @@ export const goToprofile = (navigate) => {
   navigate('/profile')
 }
 
+export const goToProfileEdit = (navigate, id) => {
+  navigate(`/profile/${id}`)
+}
+
 export const goTocart = (navigate) => {
   navigate('/cart')
 }
