@@ -54,7 +54,7 @@ Acesse [clicando aqui!](http://rappi4-renan.surge.sh/)
 #### Clone do repositório
 
 ```shell
-$ git clone <https://github.com/Renan-Ma/LabUniverse.git>
+$ git clone <https://github.com/Renan-Ma/Rappi4.git>
 ```
 
 #### Instale as dependêmcias
