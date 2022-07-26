@@ -14,6 +14,10 @@ export const goToSingUpAdress = (navigate) => {
   navigate('/singUp/adress')
 }
 
+export const goToAddressEdit = (navigate, id) => {
+  navigate(`/addressEdit/${id}`)
+}
+
 export const goToFeed = (navigate) => {
   navigate('/feed')
 }

@@ -20,7 +20,7 @@ import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/url";
 import { useNavigate } from "react-router-dom";
-import { goToProfileEdit } from "../../Routes/coordinator";
+import { goToAddressEdit, goToProfileEdit } from "../../Routes/coordinator";
 
 
 const Profile = () => {
@@ -52,7 +52,7 @@ console.log(person)
           <Paragrafo>{person && person.address}</Paragrafo>
         </div>
         <div>
-          <img  src={edit} alt="editar endereço" />
+          <img onClick={() => goToAddressEdit(navigate, person.id)}  src={edit} alt="editar endereço" />
         </div>
       </Endereco>
 
