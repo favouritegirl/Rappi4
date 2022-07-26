@@ -14,6 +14,10 @@ export const goToSingUpAdress = (navigate) => {
   navigate('/singUp/adress')
 }
 
+export const goToAddressEdit = (navigate, id) => {
+  navigate(`/addressEdit/${id}`)
+}
+
 export const goToFeed = (navigate) => {
   navigate('/feed')
 }
@@ -24,6 +28,10 @@ export const goToRestaurant = (navigate, id) => {
 
 export const goToprofile = (navigate) => {
   navigate('/profile')
+}
+
+export const goToProfileEdit = (navigate, id) => {
+  navigate(`/profile/${id}`)
 }
 
 export const goTocart = (navigate) => {

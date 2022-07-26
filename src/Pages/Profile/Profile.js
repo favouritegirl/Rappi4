@@ -2,36 +2,36 @@ import React from "react";
 import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import Header from "../../Components/Header/Header";
 import {
-  CardDiv,
-  DataCard,
   Endereco,
-  H1,
   Historico,
   MainContainer,
   ParagradoHistorico,
   Paragrafo,
   ParagrafoEndereco,
-  SubTotal,
-  TituloCard,
+  PCart,
   Usuario,
 } from "./styled";
 import edit from '../../Assets/img/edit.png'
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/url";
+import { useNavigate } from "react-router-dom";
+import { goToAddressEdit, goToProfileEdit } from "../../Routes/coordinator";
+import CardOrderHistory from "../../Components/CardOrderHistory/CardOrderHistory";
 
 
 const Profile = () => {
   useProtectedPage();
+  const navigate = useNavigate()
 
   const data = useRequestData({}, `${BASE_URL}/profile`)
   const person = data[0].user
-  const orderHistory = useRequestData({}, `${BASE_URL}/orders/history`)
+  const orderHistory = useRequestData([], `${BASE_URL}/orders/history`)
+  const history = orderHistory[0].orders
 
-console.log(orderHistory)
   return (
     <MainContainer>
-      <Header title={"Meu Perfil"} />
+      <Header title={"Meu Perfil"} exit={true} />
       <Usuario>
         <div>
           <Paragrafo>{person && person.name}</Paragrafo>
@@ -39,7 +39,11 @@ console.log(orderHistory)
           <Paragrafo>{person && person.cpf}</Paragrafo>
         </div>
         <div>
-          <img src={edit} alt="editar dados pessoais" />
+          <img
+            onClick={() => goToProfileEdit(navigate, person.id)}
+            src={edit}
+            alt="editar dados pessoais"
+          />
         </div>
       </Usuario>
 
@@ -49,27 +53,18 @@ console.log(orderHistory)
           <Paragrafo>{person && person.address}</Paragrafo>
         </div>
         <div>
-          <img src={edit} alt="editar endereço" />
+          <img
+            onClick={() => goToAddressEdit(navigate, person.id)}
+            src={edit}
+            alt="editar endereço"
+          />
         </div>
       </Endereco>
-
       <Historico>
         <ParagradoHistorico>Historico de pedidos</ParagradoHistorico>
-        <CardDiv>
-          <TituloCard>Bulguer vila Madalena</TituloCard>
-          <DataCard>23 outrobro 2020</DataCard>
-          <SubTotal>SUBTOTAL R$ 67,00</SubTotal>
-        </CardDiv>
-        <CardDiv>
-          <TituloCard>Bulguer vila Madalena</TituloCard>
-          <DataCard>23 outrobro 2020</DataCard>
-          <SubTotal>SUBTOTAL R$ 67,00</SubTotal>
-        </CardDiv>
-        <CardDiv>
-          <TituloCard>Bulguer vila Madalena</TituloCard>
-          <DataCard>23 outrobro 2020</DataCard>
-          <SubTotal>SUBTOTAL R$ 67,00</SubTotal>
-        </CardDiv>
+        {history && history.length > 0 ? history.map((request) => {
+          return <CardOrderHistory key={request.createdAt} request={request} />;
+        }) : <PCart>Você não realizou nenhum pedido</PCart>}
       </Historico>
       <Footer />
     </MainContainer>

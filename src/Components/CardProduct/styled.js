@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Main = styled.div`
   display: flex;
   width: 100%;
-  height: 130px;
+  height: 8.125rem;
   margin: 0.5rem 0;
   border: solid 1px gray;
   border-radius: 8px;
@@ -11,14 +11,13 @@ export const Main = styled.div`
 
 export const ImgProduct = styled.img`
   width: 30%;
-  height: 130px;
+  height: 8.125rem;
   border-radius: 8px 0 0 8px;
-  /* margin-bottom: 12px; */
 `;
 
 export const BoxInf = styled.div`
   display: flex;
-  height: 130px;
+  height: 8.125rem;
   flex-direction: column;
   justify-content: space-between;
   padding: 0 0 0 1rem;
@@ -35,7 +34,6 @@ export const NameProduct = styled.h3`
   margin: 0.5rem 0 0 0;
 `;
 
-
 export const QuantityProduct = styled.div`
   display: flex;
   justify-content: center;
@@ -49,8 +47,8 @@ export const QuantityProduct = styled.div`
 `;
 
 export const DescriptionProduct = styled.div`
-color: #b8b8b8;
-font-size: 14px;
+  color: #b8b8b8;
+  font-size: 0.875rem;
 `;
 
 export const Price = styled.p`
@@ -68,14 +66,13 @@ export const InfButtonAddItem = styled.button`
 
 export const InfButtonRemoveItem = styled(InfButtonAddItem)`
   border: 2px red solid;
-  color: red
-
-`
+  color: red;
+`;
 
 export const BoxInfPriceButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 1.90rem;
+  height: 1.9rem;
 `;

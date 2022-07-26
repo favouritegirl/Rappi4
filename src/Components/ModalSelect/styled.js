@@ -16,20 +16,20 @@ export const MainContainer = styled.div`
   background-color: whitesmoke;
   color: black;
   margin: auto;
-  padding: 10px 0;
+  padding: 0.625rem 0;
 `;
 
 export const SelectQuantity = styled.select`
   width: 80%;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
+  padding: 0.625rem;
+  margin: 0.625rem;
+  border-radius: 8px;
 `;
 
 export const Button = styled.button`
   align-self: end;
-  padding: 0px 10px;
-  margin: 10px;
+  padding: 0px 0.625rem;
+  margin: 0.625rem;
   border: none;
   background-color: inherit;
   font-family: "Roboto", sans-serif;

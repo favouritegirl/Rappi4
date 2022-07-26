@@ -2,61 +2,60 @@ import { TextField } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Header/Header";
 import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
-import { goToFeed } from "../../Routes/coordinator";
-import { ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
-import logo from '../../Assets/img/logo.png'
-import Header from "../../Components/Header/Header";
+import { useRequestData } from "../../Hooks/useRequestData";
+import { goToprofile } from "../../Routes/coordinator";
+import { ButtonStyled, Form, Main } from "./styled";
 
-
-const SingUpAdress = () => {
+const AddressEdit = () => {
   useProtectedPage();
   const navigate = useNavigate();
 
-  const { form, onChange, clean } = useForm({
+  const data = useRequestData({}, `${BASE_URL}/profile/address`);
+  const address = data[0].address;
+
+  const { form, onChange} = useForm({
     street: "",
     number: "",
-    complement: "",
     neighbourhood: "",
     city: "",
     state: "",
+    complement: "",
   });
 
-  const onSubmitAdress = (event) => {
+  const onSubmitForm = (event) => {
     event.preventDefault();
-    addAdress();
+    updateAddress();
   };
 
-  const addAdress = async () => {
+  const updateAddress = async () => {
     await axios
       .put(`${BASE_URL}/address`, form, TOKEN)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        clean();
-        alert("Endereço cadastrado com sucesso.");
-        goToFeed(navigate);
+        alert("Informações atualizadas com sucesso");
+        goToprofile(navigate);
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        alert(err.response);
       });
   };
 
   return (
     <Main>
-      <Header back={true} />
-      <Title>Meu Endereço</Title>
-
-      <Form onSubmit={onSubmitAdress}>
+      <Header title={"Endereço"} back={true} />
+      <Form onSubmit={onSubmitForm}>
         <TextField
           id="outlined-basic"
           name="street"
           label={"Logradouro"}
           type={"text"}
           variant="outlined"
-          placeholder="Rua / Av."
+          placeholder={address && address.street}
           value={form.street}
           onChange={onChange}
           required
@@ -67,7 +66,7 @@ const SingUpAdress = () => {
           label={"Número"}
           type={"number"}
           variant="outlined"
-          placeholder="Número"
+          placeholder={address && address.number}
           value={form.number}
           onChange={onChange}
           required
@@ -78,7 +77,7 @@ const SingUpAdress = () => {
           label={"Complemento"}
           type={"text"}
           variant="outlined"
-          placeholder="Apto. / Bloco"
+          placeholder={address && address.complement}
           value={form.complement}
           onChange={onChange}
         />
@@ -89,7 +88,7 @@ const SingUpAdress = () => {
           label={"Bairro"}
           type={"text"}
           variant="outlined"
-          placeholder="Bairro"
+          placeholder={address && address.neighbourhood}
           value={form.neighbourhood}
           onChange={onChange}
           required
@@ -100,7 +99,7 @@ const SingUpAdress = () => {
           label={"Cidade"}
           type={"text"}
           variant="outlined"
-          placeholder="Cidade"
+          placeholder={address && address.city}
           value={form.city}
           onChange={onChange}
           required
@@ -111,7 +110,7 @@ const SingUpAdress = () => {
           label={"Estado"}
           type={"text"}
           variant="outlined"
-          placeholder="Estado"
+          placeholder={address && address.state}
           value={form.state}
           onChange={onChange}
           required
@@ -123,4 +122,4 @@ const SingUpAdress = () => {
   );
 };
 
-export default SingUpAdress;
+export default AddressEdit;

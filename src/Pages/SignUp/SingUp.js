@@ -6,7 +6,9 @@ import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { goToSingUpAdress } from "../../Routes/coordinator";
-import { ButtonStyled, Form, Main, Title } from "./styled";
+import { ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
+import logo from '../../Assets/img/logo.png'
+
 
 const SingUp = () => {
   const navigate = useNavigate();
@@ -57,6 +59,8 @@ const SingUp = () => {
   return (
     <Main>
       <Header back={true}/>
+      <ImgLogo src={logo} alt="Logo rappi4" />
+
       <Title>Cadastrar</Title>
       <Form onSubmit={onSubmitForm}>
         <TextField

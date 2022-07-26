@@ -5,29 +5,28 @@ export const Main = styled.div`
   flex-direction: column;
 
   width: 100%;
-  margin: 12px 0;
+  margin: 0.75rem 0;
   /* border: 1px solid black; */
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   color: #b8b8b8;
 `;
 export const ImgRestaurant = styled.img`
   width: 100%;
-  height: 120px;
+  height: 7.5rem;
   border-radius: 8px 8px 0 0;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 `;
 export const NameRstaurant = styled.h3`
   color: #e86e5a;
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
 export const BoxInf = styled.div`
   display: flex;
-  /* justify-content: space-around; */
 `;
 
 export const InfRestaurant = styled.div`
-  margin-right: 15px;
-  margin-bottom: 8px;
+  margin-right: 0.938rem;
+  margin-bottom: 0.5rem;
 `;

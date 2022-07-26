@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ButtonStyled, Form, Main, Title } from "./styled";
+import { ButtonRegistration, ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { useNavigate } from "react-router-dom";
-import { goToFeed } from "../../Routes/coordinator";
+import { goToFeed, goTosingUp } from "../../Routes/coordinator";
+import logo from '../../Assets/img/logo.png'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,7 @@ const Login = () => {
 
   return (
     <Main>
+      <ImgLogo src={logo} alt="Logo rappi4" />
       <Title>Entrar</Title>
       <Form onSubmit={onSubmitLogin}>
         <TextField
@@ -61,6 +63,12 @@ const Login = () => {
         />
         <ButtonStyled type="submit"> Entrar</ButtonStyled>
       </Form>
+      <p>
+        Não possui cadastro?
+        <ButtonRegistration onClick={() => goTosingUp(navigate)}>
+          Clique aqui
+        </ButtonRegistration>
+      </p>
     </Main>
   );
 };

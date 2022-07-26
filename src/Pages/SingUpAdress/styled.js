@@ -11,6 +11,7 @@ export const Main = styled.div`
 
 export const Title = styled.p`
   font-size: 1rem;
+  font-weight: bold;
 `;
 
 export const Form = styled.form`
