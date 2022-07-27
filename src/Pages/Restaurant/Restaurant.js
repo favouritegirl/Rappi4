@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardProduct from "../../Components/CardProduct/CardProduct";
 import CardRestaurant from "../../Components/CardRestaurantsDetails/CardRestaurantDetails";
-import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { Category, Main, ProductByCategory } from "./styled";
 import Header from "../../Components/Header/Header";
@@ -15,10 +14,12 @@ const Restaurant = () => {
   const { restaurant } = useParams();
   const [restaurantInfo, setRestaurantInfo] = useState({});
   const [categories, setCategories] = useState([]);
+  const token = localStorage.getItem('token')
+
 
   const getRestaurants = async () => {
     await axios
-      .get(`${BASE_URL}/restaurants/${restaurant}`, TOKEN)
+      .get(`${BASE_URL}/restaurants/${restaurant}`, {headers:{auth:token}})
       .then((res) => {
         setRestaurantInfo(res.data.restaurant);
       })

@@ -2,14 +2,13 @@ import { TextField } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { goToFeed } from "../../Routes/coordinator";
-import { ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
-import logo from '../../Assets/img/logo.png'
+import { ButtonStyled, Form, Main, Title } from "./styled";
 import Header from "../../Components/Header/Header";
+
 
 
 const SingUpAdress = () => {
@@ -31,13 +30,14 @@ const SingUpAdress = () => {
   };
 
   const addAdress = async () => {
+    const token = localStorage.getItem("token");
     await axios
-      .put(`${BASE_URL}/address`, form, TOKEN)
+      .put(`${BASE_URL}/address`, form, { headers: { auth: token } })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        clean();
         alert("Endereço cadastrado com sucesso.");
         goToFeed(navigate);
+        clean();
       })
       .catch((err) => {
         alert(err.response.data.message);

@@ -3,13 +3,13 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
-import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { goToprofile } from "../../Routes/coordinator";
 import { ButtonStyled, Form, Main } from "./styled";
+
 
 const AddressEdit = () => {
   useProtectedPage();
@@ -33,8 +33,9 @@ const AddressEdit = () => {
   };
 
   const updateAddress = async () => {
+    const token = localStorage.getItem('token')
     await axios
-      .put(`${BASE_URL}/address`, form, TOKEN)
+      .put(`${BASE_URL}/address`, form, { headers: { auth: token } })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         alert("Informações atualizadas com sucesso");
@@ -42,6 +43,7 @@ const AddressEdit = () => {
       })
       .catch((err) => {
         alert(err.response);
+        console.log(err.response);
       });
   };
 
