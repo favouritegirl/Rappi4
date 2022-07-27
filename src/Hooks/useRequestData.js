@@ -9,7 +9,7 @@ export const useRequestData = (initialState, url) => {
     await axios
       .get(url, {
         headers: {
-          auth: window.localStorage.getItem("token"),
+          auth: localStorage.getItem("token"),
         },
       })
       .then((res) => {

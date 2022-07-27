@@ -5,7 +5,6 @@ import CardRestaurant from "../../Components/CardRestaurants/CardRestaurant";
 import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import Header from "../../Components/Header/Header";
 import { Order } from "../../Components/Order/Order";
-import { TOKEN } from "../../Constants/token";
 import { BASE_URL } from "../../Constants/url";
 import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
@@ -18,14 +17,27 @@ const Feed = () => {
   const [categories, setCategories] = useState([]);
   const [valueCategory, setValueCategory] = useState("");
   const [inputText, setInputText] = useState("");
+  const token = localStorage.getItem('token')
 
   const { states, setters } = useGlobal();
   const { setOrder } = setters;
   const { order } = states;
 
+  const getRestaurants = async () => {
+    await axios
+      .get(`${BASE_URL}/restaurants`, {headers:{auth:token}})
+      .then((res) => {
+        setRestaurants(res.data.restaurants);
+        filterCategory(res.data.restaurants);
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+  };
+
   const getOrder = async () => {
     await axios
-      .get(`${BASE_URL}/active-order`, TOKEN)
+      .get(`${BASE_URL}/active-order`, {headers:{auth:token}})
       .then((res) => {
         if (!res.data) {
           setOrder(res.data.order);
@@ -35,18 +47,6 @@ const Feed = () => {
             getOrder();
           }, expires - new Date().getTime());
         }
-      })
-      .catch((err) => {
-        alert(err.response.data.message);
-      });
-  };
-
-  const getRestaurants = async () => {
-    await axios
-      .get(`${BASE_URL}/restaurants`, TOKEN)
-      .then((res) => {
-        setRestaurants(res.data.restaurants);
-        filterCategory(res.data.restaurants);
       })
       .catch((err) => {
         alert(err.response.data.message);

@@ -23,7 +23,6 @@ import CardProduct from "../../Components/CardProduct/CardProduct";
 import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import axios from "axios";
-import { TOKEN } from "../../Constants/token";
 import { useNavigate } from "react-router-dom";
 import { goToFeed } from "../../Routes/coordinator";
 
@@ -33,6 +32,8 @@ const Cart = () => {
 
   const profile = useRequestData({}, `${BASE_URL}/profile`);
   const [paymentMethod, setPaymentMethod] = useState("");
+  const token = localStorage.getItem('token')
+
 
   const {states, setters} = useGlobal()
   const { cart, restaurant } = states
@@ -60,7 +61,7 @@ const Cart = () => {
       }),
       paymentMethod: paymentMethod
     }
-    await axios.post(`${BASE_URL}/restaurants/${restaurant.id}/order`, body, TOKEN)
+    await axios.post(`${BASE_URL}/restaurants/${restaurant.id}/order`, body, {headers:{auth:token}})
     .then((res) => {
       setOrder(res.data.order)
       setCart('')
