@@ -49,7 +49,7 @@ Acesse [clicando aqui!](http://rappi4-renan.surge.sh/)
 
 
 
-### :rocket: Caso queira executar a aplicação localmente
+## :file_folder: Caso queira executar a aplicação localmente
 
 #### Clone do repositório
 
