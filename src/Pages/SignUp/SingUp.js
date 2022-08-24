@@ -6,9 +6,8 @@ import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { goToSingUpAdress } from "../../Routes/coordinator";
-import { ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
-import logo from '../../Assets/img/logo.png'
-
+import * as S from "./styled";
+import logo from "../../Assets/img/logo.png";
 
 const SingUp = () => {
   const navigate = useNavigate();
@@ -57,12 +56,12 @@ const SingUp = () => {
   };
 
   return (
-    <Main>
-      <Header back={true}/>
-      <ImgLogo src={logo} alt="Logo rappi4" />
+    <S.Main>
+      <Header back={true} />
+      <S.ImgLogo src={logo} alt="Logo rappi4" />
 
-      <Title>Cadastrar</Title>
-      <Form onSubmit={onSubmitForm}>
+      <S.Title>Cadastrar</S.Title>
+      <S.Form onSubmit={onSubmitForm}>
         <TextField
           id="outlined-basic"
           name="name"
@@ -121,9 +120,9 @@ const SingUp = () => {
           inputProps={{ minLength: 6, title: "Senha mínima 6 caracteres" }}
           required
         />
-        <ButtonStyled type="submit"> Entrar</ButtonStyled>
-      </Form>
-    </Main>
+        <S.ButtonStyled type="submit"> Entrar</S.ButtonStyled>
+      </S.Form>
+    </S.Main>
   );
 };
 

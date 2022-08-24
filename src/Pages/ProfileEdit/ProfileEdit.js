@@ -1,45 +1,45 @@
-import { TextField } from '@mui/material'
-import axios from 'axios'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import Header from '../../Components/Header/Header'
-import { TOKEN } from '../../Constants/token'
-import { BASE_URL } from '../../Constants/url'
-import { useForm } from '../../Hooks/useForm'
-import { useProtectedPage } from '../../Hooks/UseProtectedPage'
-import { useRequestData } from '../../Hooks/useRequestData'
-import { goToprofile } from '../../Routes/coordinator'
-import { ButtonStyled, Form, Main } from './styled'
+import { TextField } from "@mui/material";
+import axios from "axios";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Header/Header";
+import { TOKEN } from "../../Constants/token";
+import { BASE_URL } from "../../Constants/url";
+import { useForm } from "../../Hooks/useForm";
+import { useProtectedPage } from "../../Hooks/UseProtectedPage";
+import { useRequestData } from "../../Hooks/useRequestData";
+import { goToprofile } from "../../Routes/coordinator";
+import * as S from "./styled";
 
 const ProfileEdit = () => {
   useProtectedPage();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
+  const data = useRequestData({}, `${BASE_URL}/profile`);
+  const person = data[0].user;
 
-  const data = useRequestData({}, `${BASE_URL}/profile`)
-  const person = data[0].user
-  
   const { form, onChange, clean } = useForm({
     name: "",
     email: "",
     cpf: "",
   });
-  
+
   const onSubmitForm = (event) => {
     event.preventDefault();
-    updatePerfil()
-  }
+    updatePerfil();
+  };
 
-  const updatePerfil = async() => {
-    await axios.put(`${BASE_URL}/profile`, form, TOKEN)
-    .then((res)=> {
-      alert("Informações atualizadas com sucesso")
-      goToprofile(navigate)
-    })
-    .catch((err)=>{
-      alert(err.response)
-    })
-  }
+  const updatePerfil = async () => {
+    await axios
+      .put(`${BASE_URL}/profile`, form, TOKEN)
+      .then((res) => {
+        alert("Informações atualizadas com sucesso");
+        goToprofile(navigate);
+      })
+      .catch((err) => {
+        alert(err.response);
+      });
+  };
 
   const cpfMask = (value) => {
     return value
@@ -51,9 +51,9 @@ const ProfileEdit = () => {
   };
 
   return (
-    <Main>
-      <Header title={"Editar"} back={true}/>
-      <Form onSubmit={onSubmitForm}>
+    <S.Main>
+      <Header title={"Editar"} back={true} />
+      <S.Form onSubmit={onSubmitForm}>
         <TextField
           id="outlined-basic"
           name="name"
@@ -87,11 +87,11 @@ const ProfileEdit = () => {
           onChange={onChange}
           required
         />
-        
-        <ButtonStyled type="submit"> Salvar</ButtonStyled>
-      </Form>
-    </Main>
-  )
-}
 
-export default ProfileEdit
+        <S.ButtonStyled type="submit"> Salvar</S.ButtonStyled>
+      </S.Form>
+    </S.Main>
+  );
+};
+
+export default ProfileEdit;

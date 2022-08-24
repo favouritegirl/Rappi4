@@ -1,17 +1,8 @@
 import React from "react";
 import { Footer } from "../../Components/FooterMenu/FooterMenu";
 import Header from "../../Components/Header/Header";
-import {
-  Endereco,
-  Historico,
-  MainContainer,
-  ParagradoHistorico,
-  Paragrafo,
-  ParagrafoEndereco,
-  PCart,
-  Usuario,
-} from "./styled";
-import edit from '../../Assets/img/edit.png'
+import * as S from "./styled";
+import edit from "../../Assets/img/edit.png";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/url";
@@ -19,24 +10,23 @@ import { useNavigate } from "react-router-dom";
 import { goToAddressEdit, goToProfileEdit } from "../../Routes/coordinator";
 import CardOrderHistory from "../../Components/CardOrderHistory/CardOrderHistory";
 
-
 const Profile = () => {
   useProtectedPage();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const data = useRequestData({}, `${BASE_URL}/profile`)
-  const person = data[0].user
-  const orderHistory = useRequestData([], `${BASE_URL}/orders/history`)
-  const history = orderHistory[0].orders
+  const data = useRequestData({}, `${BASE_URL}/profile`);
+  const person = data[0].user;
+  const orderHistory = useRequestData([], `${BASE_URL}/orders/history`);
+  const history = orderHistory[0].orders;
 
   return (
-    <MainContainer>
+    <S.MainContainer>
       <Header title={"Meu Perfil"} exit={true} />
-      <Usuario>
+      <S.Usuario>
         <div>
-          <Paragrafo>{person && person.name}</Paragrafo>
-          <Paragrafo>{person && person.email}</Paragrafo>
-          <Paragrafo>{person && person.cpf}</Paragrafo>
+          <S.Paragrafo>{person && person.name}</S.Paragrafo>
+          <S.Paragrafo>{person && person.email}</S.Paragrafo>
+          <S.Paragrafo>{person && person.cpf}</S.Paragrafo>
         </div>
         <div>
           <img
@@ -45,12 +35,12 @@ const Profile = () => {
             alt="editar dados pessoais"
           />
         </div>
-      </Usuario>
+      </S.Usuario>
 
-      <Endereco>
+      <S.Endereco>
         <div>
-          <ParagrafoEndereco>Endereço cadastrado</ParagrafoEndereco>
-          <Paragrafo>{person && person.address}</Paragrafo>
+          <S.ParagrafoEndereco>Endereço cadastrado</S.ParagrafoEndereco>
+          <S.Paragrafo>{person && person.address}</S.Paragrafo>
         </div>
         <div>
           <img
@@ -59,15 +49,21 @@ const Profile = () => {
             alt="editar endereço"
           />
         </div>
-      </Endereco>
-      <Historico>
-        <ParagradoHistorico>Historico de pedidos</ParagradoHistorico>
-        {history && history.length > 0 ? history.map((request) => {
-          return <CardOrderHistory key={request.createdAt} request={request} />;
-        }) : <PCart>Você não realizou nenhum pedido</PCart>}
-      </Historico>
+      </S.Endereco>
+      <S.Historico>
+        <S.ParagradoHistorico>Historico de pedidos</S.ParagradoHistorico>
+        {history && history.length > 0 ? (
+          history.map((request) => {
+            return (
+              <CardOrderHistory key={request.createdAt} request={request} />
+            );
+          })
+        ) : (
+          <S.PCart>Você não realizou nenhum pedido</S.PCart>
+        )}
+      </S.Historico>
       <Footer />
-    </MainContainer>
+    </S.MainContainer>
   );
 };
 

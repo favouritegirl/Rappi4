@@ -1,19 +1,7 @@
 import React from "react";
 import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import ModalSelect from "../ModalSelect/ModalSelect";
-import {
-  BoxInf,
-  BoxNameQuantity,
-  ImgProduct,
-  Main,
-  NameProduct,
-  QuantityProduct,
-  Price,
-  BoxInfPriceButton,
-  InfButtonRemoveItem,
-  InfButtonAddItem,
-  DescriptionProduct,
-} from "./styled";
+import * as S from "./styled";
 
 const CardProduct = ({ product, restaurant }) => {
   const [showModal, setShowModal] = React.useState(false);
@@ -26,44 +14,43 @@ const CardProduct = ({ product, restaurant }) => {
     setShowModal(false);
   };
 
-
-  const productInCart =  cart.find((pCart) => pCart.id === product.id);
+  const productInCart = cart.find((pCart) => pCart.id === product.id);
 
   return (
-    <Main>
-      <ImgProduct src={product.photoUrl} />
-      <BoxInf>
-        <BoxNameQuantity>
-          <NameProduct>{product.name}</NameProduct>
+    <S.Main>
+      <S.ImgProduct src={product.photoUrl} />
+      <S.BoxInf>
+        <S.BoxNameQuantity>
+          <S.NameProduct>{product.name}</S.NameProduct>
           {productInCart && (
-            <QuantityProduct>{productInCart.quantity}</QuantityProduct>
+            <S.QuantityProduct>{productInCart.quantity}</S.QuantityProduct>
           )}
-        </BoxNameQuantity>
-        <DescriptionProduct>{product.description}</DescriptionProduct>
-        <BoxInfPriceButton>
-          <Price>
+        </S.BoxNameQuantity>
+        <S.DescriptionProduct>{product.description}</S.DescriptionProduct>
+        <S.BoxInfPriceButton>
+          <S.Price>
             {new Intl.NumberFormat("pt-br", {
               style: "currency",
               currency: "BRL",
             }).format(product.price)}{" "}
-          </Price>
+          </S.Price>
           {productInCart ? (
-            <InfButtonRemoveItem onClick={() => removeToCart(product.id)}>
+            <S.InfButtonRemoveItem onClick={() => removeToCart(product.id)}>
               Remove
-            </InfButtonRemoveItem>
+            </S.InfButtonRemoveItem>
           ) : (
-            <InfButtonAddItem onClick={() => setShowModal(true)}>
+            <S.InfButtonAddItem onClick={() => setShowModal(true)}>
               Adicionar
-            </InfButtonAddItem>
+            </S.InfButtonAddItem>
           )}
-        </BoxInfPriceButton>
+        </S.BoxInfPriceButton>
         <ModalSelect
           choiceQuantity={choiceQuantity}
           open={showModal}
           setOpen={setShowModal}
         ></ModalSelect>
-      </BoxInf>
-    </Main>
+      </S.BoxInf>
+    </S.Main>
   );
 };
 

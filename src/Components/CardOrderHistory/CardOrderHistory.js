@@ -1,20 +1,20 @@
 import React from "react";
-import { CardDiv, DataCard, SubTotal, TituloCard } from "./styled";
+import * as S from "./styled";
 import moment from "moment";
 
 const CardOrderHistory = ({ request }) => {
   return (
-    <CardDiv>
-      <TituloCard>{request.restaurantName}</TituloCard>
-      <DataCard>{moment(request.createdAt).format("DD/MM/YYYY")}</DataCard>
-      <SubTotal>
+    <S.CardDiv>
+      <S.TituloCard>{request.restaurantName}</S.TituloCard>
+      <S.DataCard>{moment(request.createdAt).format("DD/MM/YYYY")}</S.DataCard>
+      <S.SubTotal>
         SUBTOTAL
         {new Intl.NumberFormat("pt-br", {
           style: "currency",
           currency: "BRL",
         }).format(request.totalPrice)}
-      </SubTotal>
-    </CardDiv>
+      </S.SubTotal>
+    </S.CardDiv>
   );
 };
 

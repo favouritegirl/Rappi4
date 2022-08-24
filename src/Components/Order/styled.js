@@ -22,21 +22,15 @@ export const MainContainer = styled.nav`
 
 export const IMG = styled.img`
   margin: 0 1.5rem;
-`
-
+`;
 
 export const Title = styled.p`
-font-size: 1rem;
-color: white;
-`
+  font-size: 1rem;
+  color: white;
+`;
 
-export const BoxInform = styled.div`
-
-`
+export const BoxInform = styled.div``;
 export const InfTotal = styled.p`
-font-size: 1rem;
-font-weight: bold;
-`
-
-
-
+  font-size: 1rem;
+  font-weight: bold;
+`;

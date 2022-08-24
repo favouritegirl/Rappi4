@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { Button } from "@mui/material";
 
 export const Main = styled.div`
@@ -7,7 +7,7 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 export const ImgLogo = styled.img`
   width: 6.5rem;
@@ -16,8 +16,8 @@ export const ImgLogo = styled.img`
 `;
 
 export const Title = styled.p`
-font-size: 1rem;
-`
+  font-size: 1rem;
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -25,15 +25,15 @@ export const Form = styled.form`
   height: 30%;
   width: 80%;
   justify-content: space-evenly;
-`
+`;
 
 export const ButtonStyled = styled(Button)`
-  &&{
-    background-color: #E86E5A;
+  && {
+    background-color: #e86e5a;
     color: #000000;
     width: 100%;
   }
-`
+`;
 
 export const ButtonRegistration = styled.button`
   border: none;
@@ -41,4 +41,4 @@ export const ButtonRegistration = styled.button`
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
-`
+`;

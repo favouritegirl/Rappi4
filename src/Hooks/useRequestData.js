@@ -22,7 +22,7 @@ export const useRequestData = (initialState, url) => {
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   return [data];
 };

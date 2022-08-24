@@ -1,39 +1,39 @@
 export const goToBack = (navigate) => {
-  navigate(-1)
-}
+  navigate(-1);
+};
 
 export const goToLogin = (navigate) => {
-  navigate('/')
-}
+  navigate("/");
+};
 
 export const goTosingUp = (navigate) => {
-  navigate('/singUp')
-}
+  navigate("/singUp");
+};
 
 export const goToSingUpAdress = (navigate) => {
-  navigate('/singUp/adress')
-}
+  navigate("/singUp/adress");
+};
 
 export const goToAddressEdit = (navigate, id) => {
-  navigate(`/addressEdit/${id}`)
-}
+  navigate(`/addressEdit/${id}`);
+};
 
 export const goToFeed = (navigate) => {
-  navigate('/feed')
-}
+  navigate("/feed");
+};
 
 export const goToRestaurant = (navigate, id) => {
-  navigate(`/feed/${id}`)
-}
+  navigate(`/feed/${id}`);
+};
 
 export const goToprofile = (navigate) => {
-  navigate('/profile')
-}
+  navigate("/profile");
+};
 
 export const goToProfileEdit = (navigate, id) => {
-  navigate(`/profile/${id}`)
-}
+  navigate(`/profile/${id}`);
+};
 
 export const goTocart = (navigate) => {
-  navigate('/cart')
-}
+  navigate("/cart");
+};

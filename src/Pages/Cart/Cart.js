@@ -1,20 +1,5 @@
 import React, { useState } from "react";
-import {
-  BoxAdress,
-  Button,
-  ContainerCart,
-  ContainerH5,
-  ContainerPrice,
-  ContainerTotal,
-  FormOfPayment,
-  FormPayment,
-  H5Styled,
-  InputStyled,
-  Main,
-  PAddress,
-  ProfileAdress,
-  TotalPrice,
-} from "./styled";
+import * as S from "./styled";
 import Header from "../../Components/Header/Header";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/url";
@@ -73,15 +58,15 @@ const Cart = () => {
   }
   
   return (
-    <Main>
+    <S.Main>
       <Header title={"Meu Carrinho"} />
-      <BoxAdress>
-        <PAddress>Endereço de entrega</PAddress>
-        <ProfileAdress>
+      <S.BoxAdress>
+        <S.PAddress>Endereço de entrega</S.PAddress>
+        <S.ProfileAdress>
           {profile[0].user && profile[0].user.address}
-        </ProfileAdress>
-      </BoxAdress>
-      <ContainerCart>
+        </S.ProfileAdress>
+      </S.BoxAdress>
+      <S.ContainerCart>
         <div>
           <p>{restaurant.name}</p>
           <p>{restaurant.address}</p>
@@ -102,13 +87,13 @@ const Cart = () => {
             <p>Carrinho Vazio</p>
           )}
         </div>
-        <ContainerTotal>
-          <ContainerH5>
-            <H5Styled>Subtotal</H5Styled>
-          </ContainerH5>
+        <S.ContainerTotal>
+          <S.ContainerH5>
+            <S.H5Styled>Subtotal</S.H5Styled>
+          </S.ContainerH5>
  
           {restaurant && [restaurant].length > 0 ? (
-            <ContainerPrice>
+            <S.ContainerPrice>
               <p>
                 Frete
                 {new Intl.NumberFormat("pt-br", {
@@ -116,19 +101,19 @@ const Cart = () => {
                   currency: "BRL",
                 }).format(restaurant.shipping)}
               </p>
-              <TotalPrice>
+              <S.TotalPrice>
                 {new Intl.NumberFormat("pt-br", {
                   style: "currency",
                   currency: "BRL",
                 }).format(totalPrice() + restaurant.shipping)}
-              </TotalPrice>
-            </ContainerPrice>
+              </S.TotalPrice>
+            </S.ContainerPrice>
           ) : null}
-        </ContainerTotal>
-        <FormOfPayment>Forma de pagamento</FormOfPayment>
-        <FormPayment action="">
+        </S.ContainerTotal>
+        <S.FormOfPayment>Forma de pagamento</S.FormOfPayment>
+        <S.FormPayment action="">
           <div>
-            <InputStyled
+            <S.InputStyled
               type="radio"
               name="pagamento"
               value="money"
@@ -137,7 +122,7 @@ const Cart = () => {
             Dinheiro
           </div>
           <div>
-            <InputStyled
+            <S.InputStyled
               type="radio"
               name="pagamento"
               value="creditcard"
@@ -145,11 +130,11 @@ const Cart = () => {
             />
             Cartão
           </div>
-          <Button onClick={placeOrder}>Confirmar</Button>
-        </FormPayment>
-      </ContainerCart>
+          <S.Button onClick={placeOrder}>Confirmar</S.Button>
+        </S.FormPayment>
+      </S.ContainerCart>
       <Footer />
-    </Main>
+    </S.Main>
   );
 };
 

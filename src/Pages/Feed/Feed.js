@@ -8,7 +8,7 @@ import { Order } from "../../Components/Order/Order";
 import { BASE_URL } from "../../Constants/url";
 import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
-import { InputSearch, Main, Menu, MenuItem, Restaurants } from "./styled";
+import * as S from "./styled";
 
 const Feed = () => {
   useProtectedPage();
@@ -81,22 +81,22 @@ const Feed = () => {
   }, []);
 
   return (
-    <Main>
+    <S.Main>
       <Header title={"Rappi4"} />
-      <InputSearch
+      <S.InputSearch
         value={inputText}
         placeholder="Restaurante"
         onChange={(event) => setInputText(event.target.value)}
       />
-      <Menu>
-        <MenuItem onClick={() => setValueCategory("")}>Todos</MenuItem>
+      <S.Menu>
+        <S.MenuItem onClick={() => setValueCategory("")}>Todos</S.MenuItem>
         {categories.map((c) => (
-          <MenuItem key={c} onClick={() => setValueCategory(c)}>
+          <S.MenuItem key={c} onClick={() => setValueCategory(c)}>
             {c}
-          </MenuItem>
+          </S.MenuItem>
         ))}
-      </Menu>
-      <Restaurants>{filterRestaurant}</Restaurants>
+      </S.Menu>
+      <S.Restaurants>{filterRestaurant}</S.Restaurants>
       {order && (
         <Order
           restaurant={order.restaurantName}
@@ -104,7 +104,7 @@ const Feed = () => {
         />
       )}
       <Footer />
-    </Main>
+    </S.Main>
   );
 };
 

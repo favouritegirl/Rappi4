@@ -1,24 +1,18 @@
 import React from "react";
-import {
-  BoxInf,
-  ImgRestaurant,
-  InfRestaurant,
-  Main,
-  NameRstaurant,
-} from "./styled";
+import * as S from "./styled";
 
 const CardRestaurant = ({ restaurant }) => {
   return (
-    <Main>
-      <ImgRestaurant src={restaurant.logoUrl} />
-      <NameRstaurant>{restaurant.name}</NameRstaurant>
-      <InfRestaurant>{restaurant.category}</InfRestaurant>
-      <BoxInf>
-        <InfRestaurant>{restaurant.deliveryTime} min</InfRestaurant>
-        <InfRestaurant>Frete R${restaurant.shipping},00</InfRestaurant>
-      </BoxInf>
-      <InfRestaurant>{restaurant.address}</InfRestaurant>
-    </Main>
+    <S.Main>
+      <S.ImgRestaurant src={restaurant.logoUrl} />
+      <S.NameRstaurant>{restaurant.name}</S.NameRstaurant>
+      <S.InfRestaurant>{restaurant.category}</S.InfRestaurant>
+      <S.BoxInf>
+        <S.InfRestaurant>{restaurant.deliveryTime} min</S.InfRestaurant>
+        <S.InfRestaurant>Frete R${restaurant.shipping},00</S.InfRestaurant>
+      </S.BoxInf>
+      <S.InfRestaurant>{restaurant.address}</S.InfRestaurant>
+    </S.Main>
   );
 };
 

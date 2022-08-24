@@ -6,7 +6,6 @@ export const Main = styled.div`
 
   width: 100%;
   margin: 0.75rem 0;
-  /* border: 1px solid black; */
   border-radius: 0.5rem;
   font-size: 1rem;
   color: #b8b8b8;

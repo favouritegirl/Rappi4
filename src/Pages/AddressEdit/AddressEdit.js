@@ -8,7 +8,7 @@ import { useForm } from "../../Hooks/useForm";
 import { useProtectedPage } from "../../Hooks/UseProtectedPage";
 import { useRequestData } from "../../Hooks/useRequestData";
 import { goToprofile } from "../../Routes/coordinator";
-import { ButtonStyled, Form, Main } from "./styled";
+import * as S from "./styled";
 
 
 const AddressEdit = () => {
@@ -48,9 +48,9 @@ const AddressEdit = () => {
   };
 
   return (
-    <Main>
+    <S.Main>
       <Header title={"Endereço"} back={true} />
-      <Form onSubmit={onSubmitForm}>
+      <S.Form onSubmit={onSubmitForm}>
         <TextField
           id="outlined-basic"
           name="street"
@@ -118,9 +118,9 @@ const AddressEdit = () => {
           required
         />
 
-        <ButtonStyled type="submit"> Salvar</ButtonStyled>
-      </Form>
-    </Main>
+        <S.ButtonStyled type="submit"> Salvar</S.ButtonStyled>
+      </S.Form>
+    </S.Main>
   );
 };
 

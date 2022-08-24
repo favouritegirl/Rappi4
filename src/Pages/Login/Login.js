@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ButtonRegistration, ButtonStyled, Form, ImgLogo, Main, Title } from "./styled";
+import * as S from "./styled";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
@@ -36,10 +36,10 @@ const Login = () => {
   };
 
   return (
-    <Main>
-      <ImgLogo src={logo} alt="Logo rappi4" />
-      <Title>Entrar</Title>
-      <Form onSubmit={onSubmitLogin}>
+    <S.Main>
+      <S.ImgLogo src={logo} alt="Logo rappi4" />
+      <S.Title>Entrar</S.Title>
+      <S.Form onSubmit={onSubmitLogin}>
         <TextField
           id="outlined-basic"
           label="E-mail"
@@ -61,15 +61,15 @@ const Login = () => {
           inputProps={{ minLength: 6, title: "Senha mínima 6 caracteres" }}
           required
         />
-        <ButtonStyled type="submit"> Entrar</ButtonStyled>
-      </Form>
+        <S.ButtonStyled type="submit"> Entrar</S.ButtonStyled>
+      </S.Form>
       <p>
         Não possui cadastro?
-        <ButtonRegistration onClick={() => goTosingUp(navigate)}>
+        <S.ButtonRegistration onClick={() => goTosingUp(navigate)}>
           Clique aqui
-        </ButtonRegistration>
+        </S.ButtonRegistration>
       </p>
-    </Main>
+    </S.Main>
   );
 };
 

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Main = styled.div`
   padding: 0 1rem;
   margin-top: 0.5rem;
-
 `;
 
 export const ProductByCategory = styled.div`

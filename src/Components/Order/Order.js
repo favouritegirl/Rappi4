@@ -1,21 +1,20 @@
-import React from 'react'
-import {MainContainer, Main, BoxInform, Title, IMG, InfTotal} from './styled';
-import clock from '../../Assets/img/clock.png'
+import React from "react";
+import * as S from "./styled";
+import clock from "../../Assets/img/clock.png";
 
-export const Order = ({totalPrice, restaurant}) => {
-
+export const Order = ({ totalPrice, restaurant }) => {
   return (
-    <Main>
-      <MainContainer>
-        <IMG src={clock} alt="clock" />
-        <BoxInform>
+    <S.Main>
+      <S.MainContainer>
+        <S.IMG src={clock} alt="clock" />
+        <S.BoxInform>
           <div>
-            <Title>Pedido em andamento</Title>
+            <S.Title>Pedido em andamento</S.Title>
           </div>
           <p>{restaurant}</p>
-          <InfTotal>Subtotal R$ {totalPrice},00</InfTotal>
-        </BoxInform>
-      </MainContainer>
-    </Main>
+          <S.InfTotal>Subtotal R$ {totalPrice},00</S.InfTotal>
+        </S.BoxInform>
+      </S.MainContainer>
+    </S.Main>
   );
-}
+};
