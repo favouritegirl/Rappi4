@@ -1,7 +1,7 @@
 # 💻 Projeto Rappi4
 
 <center>
-   <img src="https://user-images.githubusercontent.com/69327864/181111998-83eaec7c-d2b6-444a-bff6-0eb883983e7d.png" width="40%"/>
+   <img src="" width="40%"/>
 </center
   
 <br>
